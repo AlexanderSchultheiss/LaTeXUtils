@@ -1,0 +1,8 @@
+\NewDocumentCommand{\inittodo}{m}{
+  \expandafter\NewDocumentCommand\csname #1\endcsname{m}{
+    \todo{#1: ##1}
+  }
+  \expandafter\NewDocumentCommand\csname #1i\endcsname{m}{
+    \todo[inline]{#1: ##1}
+  }
+}
