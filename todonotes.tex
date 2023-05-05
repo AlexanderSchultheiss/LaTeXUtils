@@ -1,8 +1,16 @@
-\NewDocumentCommand{\inittodo}{m}{
+\NewDocumentCommand{\inittodo}{m g}{
   \expandafter\NewDocumentCommand\csname #1\endcsname{m}{
-    \todo{#1: ##1}
+      \IfNoValueTF{#2} {
+        \todo{#1: ##1}
+        }{
+            \todo[backgroundcolor={#2}]{#1: ##1}
+        }
   }
   \expandafter\NewDocumentCommand\csname #1i\endcsname{m}{
+      \IfNoValueTF{#2} {
     \todo[inline]{#1: ##1}
+    }{
+        \todo[backgroundcolor={#2},inline]{#1: ##1}
+    }
   }
 }
