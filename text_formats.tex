@@ -1,0 +1,8 @@
+
+\NewDocumentCommand{\textbox}{m}{
+    \begin{minipage}{\columnwidth}
+        \fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+                #1
+        \end{minipage}}
+    \end{minipage}
+}
