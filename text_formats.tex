@@ -1,8 +1,27 @@
 
 \NewDocumentCommand{\textbox}{m}{
-    \begin{minipage}{\columnwidth}
-        \fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-                #1
-        \end{minipage}}
-    \end{minipage}
+	\begin{minipage}{\columnwidth}
+		\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+				#1
+			\end{minipage}}
+	\end{minipage}
 }
+
+\newenvironment{rqbox}{\par\begingroup
+	\setlength{\fboxsep}{5pt}\findlength
+	\setbox0=\vbox\bgroup\noindent
+	\hsize=0.95\linewidth
+	\begin{minipage}{0.95\linewidth}\normalsize}
+		{\end{minipage}\egroup
+	\textcolor{cat-Gray!10}{\fboxsep1.5pt\fbox
+		{\fboxsep5pt\colorbox{cat-Gray!10}{\normalcolor\box0}}}
+	\endgroup\par\noindent
+	\normalcolor\ignorespacesafterend}
+\let\Rqbox\rqbox
+\let\endRqbox\endrqbox
+
+\newenvironment{motivatingexample}{
+	\def\FrameCommand{\fboxsep=0.4\FrameSep \colorbox{cat-Blue!30}}
+	\MakeFramed {\advance\hsize-\width \FrameRestore}
+	\itshape
+}{\endMakeFramed}
